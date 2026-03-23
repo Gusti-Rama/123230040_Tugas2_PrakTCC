@@ -1,7 +1,7 @@
 // Import Package dan File
 const express = require("express");
 const sequelize = require("./config/database");
-const userRoutes = require("./routes/userRoutes");
+const userRoutes = require("./routes/noteRoutes");
 
 // Inisialisasi Express dan Cors
 const app = express();
@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 
 // Setting Routes
 require("./schema/Notes"); // Untuk generate Tabel Notes
-app.use("/api/v1/notes", userRoutes); // Untuk setting routes note
+app.use("/api/v1/notes", noteRoutes); // Untuk setting routes note
 
 // Sync Database dan Jalankan Server
 const port = process.env.PORT || 3000;

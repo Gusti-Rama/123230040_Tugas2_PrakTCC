@@ -1,23 +1,23 @@
-const User = require("../schema/Notes");
+const Notes = require("../schema/Notes");
 
 const findAll = async () => {
-  return await User.findAll({
-    attributes: ["id", "username", "email"],
+  return await Notes.findAll({
+    attributes: ["id", "judul", "isi", "tanggal_dibuat"],
   });
 };
 
-const create = async (userData) => {
-  return await User.create(userData);
+const create = async (NotesData) => {
+  return await Notes.create(NotesData);
 }
 
 const findById = async (id) => {
-  return await User.findByPk(id, {
-    attributes: ["id", "username", "email"],
+  return await Notes.findByPk(id, {
+    attributes: ["id", "judul", "isi", "tanggal_dibuat"],
   });
 }
 
-const updateById = async (id, userData) => {
-  return await User.update(userData, {
+const updateById = async (id, NotesData) => {
+  return await Notes.update(NotesData, {
     where: {
       id: id,
     },
@@ -25,7 +25,7 @@ const updateById = async (id, userData) => {
 }
 
 const deleteById = async (id) => {
-  return await User.destroy({
+  return await Notes.destroy({
     where: {
       id: id,
     },

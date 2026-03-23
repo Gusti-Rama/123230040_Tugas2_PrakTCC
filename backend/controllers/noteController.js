@@ -1,28 +1,28 @@
-const userModel = require("../models/noteModels");
+const noteModel = require("../models/noteModels");
 
-const getAllUsers = async (req, res) => {
+const getAllNotes = async (req, res) => {
   try {
-    const allDataUser = await userModel.findAll();
+    const allDataNote = await noteModel.findAll();
     res.status(200).json({
-      message: "Users retrieved successfully",
-      data: allDataUser,
+      message: "Notes retrieved successfully",
+      data: allDataNote,
     });
   } catch (error) {
     res.status(500).json({
-      message: "Error retrieving users",
+      message: "Error retrieving Notes",
       error: error.message,
     });
   }
 };
 
-const createUser = async (req, res) => {
-  const { username, email } = req.body;
+const createNote = async (req, res) => {
+  const { judul, isi } = req.body;
 
   try {
-    const newUser = await userModel.create({ username, email });
+    const newNote = await noteModel.create({ judul, isi });
     res.status(201).json({
-      message: "User created successfully",
-      data: newUser,
+      message: "Note created successfully",
+      data: newNote,
     });
   } catch (error) {
     res.status(400).json({
@@ -32,87 +32,87 @@ const createUser = async (req, res) => {
   }
 };
 
-const getUserById = async (req, res) => {
+const getNoteById = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const user = await userModel.findById(id);
+    const note = await noteModel.findById(id);
 
-    if (!user) {
+    if (!note) {
       return res.status(404).json({
-        message: "User not found",
+        message: "Note not found",
       });
     }
 
     res.status(200).json({
-      message: "User retrieved successfully",
-      data: user,
+      message: "Note retrieved successfully",
+      data: note,
     });
 
   } catch (error) {
     res.status(500).json({
-      message: "Error retrieving user",
+      message: "Error retrieving note",
       error: error.message,
     });
   }
 };
 
-const updateUser = async (req, res) => {
+const updateNote = async (req, res) => {
   const { id } = req.params;
-  const { username, email } = req.body;
+  const { judul, isi } = req.body;
 
   try {
 
-    const user = await userModel.findById(id);
+    const note = await noteModel.findById(id);
 
-    if (!user) {
+    if (!note) {
       return res.status(404).json({
-        message: "User not found",
+        message: "Note not found",
       });
     }
 
-    const updatedUser = await userModel.updateById(id, { username, email });
+    const updatedNote = await noteModel.updateById(id, { judul, isi });
     res.status(200).json({
-      message: "User updated successfully",
-      data: updatedUser,
+      message: "Note updated successfully",
+      data: updatedNote,
     });
   } catch (error) {
     res.status(500).json({
-      message: "Error updating user",
+      message: "Error updating note",
       error: error.message,
     });
   }
 };
 
-const deleteUser = async (req, res) => {
+const deleteNote = async (req, res) => {
   const { id } = req.params;
 
   try {
 
-    const user = await userModel.findById(id);
-    if (!user) {
+    const note = await noteModel.findById(id);
+    if (!note) {
       return res.status(404).json({
-        message: "User not found",
+        message: "Note not found",
       });
     }
 
-    const deletedUser = await userModel.deleteById(id);
+    const deletedNote = await noteModel.deleteById(id);
     res.status(200).json({
-      message: "User deleted successfully",
-      data: deletedUser,
+      message: "Note deleted successfully",
+      data: deletedNote,
     });
   } catch (error) {
     res.status(500).json({
-      message: "Error deleting user",
+      message: "Error deleting note",
       error: error.message,
     });
   }
 };
 
 module.exports = {
-  getAllUsers,
-  createUser,
-  getUserById,
-  updateUser,
-  deleteUser,
+  getAllNotes,
+  createNote,
+  getNoteById,
+  updateNote,
+  deleteNote,
 };
