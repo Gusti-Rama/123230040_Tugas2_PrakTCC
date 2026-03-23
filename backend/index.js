@@ -23,8 +23,8 @@ app.get("/", (req, res) => {
 });
 
 // Setting Routes
-require("./schema/User"); // Untuk generate Tabel Users
-app.use("/api/v1/users", userRoutes); // Untuk setting routes user
+require("./schema/Notes"); // Untuk generate Tabel Notes
+app.use("/api/v1/notes", userRoutes); // Untuk setting routes note
 
 // Sync Database dan Jalankan Server
 const port = process.env.PORT || 3000;
