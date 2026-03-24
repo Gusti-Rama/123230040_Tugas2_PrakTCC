@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Notes App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Notes App</h1>
+
+      <div class="form-section">
+        <input type="hidden" id="noteId" />
+        <input type="text" id="judul" placeholder="Judul Catatan..." required />
+        <textarea
+          id="isi"
+          placeholder="Isi catatan..."
+          rows="4"
+          required
+        ></textarea>
+        <button id="btnSave" onclick="saveNote()">Tambah Catatan</button>
+        <button id="btnCancel" onclick="resetForm()" style="display: none">
+          Batal
+        </button>
+      </div>
+
+      <hr />
+
+      <div id="notesContainer" class="notes-grid"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

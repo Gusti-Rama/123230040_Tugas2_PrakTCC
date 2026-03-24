@@ -1,7 +1,7 @@
 // Import Package dan File
 const express = require("express");
 const sequelize = require("./config/database");
-const userRoutes = require("./routes/noteRoutes");
+const noteRoutes = require("./routes/noteRoutes");
 
 // Inisialisasi Express dan Cors
 const app = express();
